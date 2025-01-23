@@ -1,4 +1,4 @@
-?php
+<?php
 // fisierul 1
 set_time_limit(0);
 
