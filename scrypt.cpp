@@ -1,19 +1,19 @@
-#include &lt;iostream&gt; // pentru COUT&lt;&lt;
-#include &lt;sstream&gt;
-#include &lt;string&gt;
-#include &lt;fstream&gt;	// pentru OFSTREAM OUTFILE
-#include &lt;stdlib.h&gt; // pentru SYSTEM
-#include &lt;stdio.h&gt;	// pentru SPRINTF
-#include &lt;string.h&gt; // pentru BZERO
-#include &lt;unistd.h&gt; // pentru Sleep
-#include &lt;time.h&gt; 
-#define VERSION &quot;linux_hlds_v2.8&quot;
+#include iostream // pentru COUT
+#include sstream
+#include string
+#include fstream	// pentru OFSTREAM OUTFILE
+#include stdlib.h // pentru SYSTEM
+#include stdio.h	// pentru SPRINTF
+#include string.h // pentru BZERO
+#include unistd.h // pentru Sleep
+#include time.h 
+#define VERSION linux_hlds_v2.8
 
 using namespace std;
 
-string maps = &quot;maps.txt&quot;;
-const char* steamclient = &quot;/root/.steam/sdk32/steamclient.so&quot;;
-string maps_list[256], _copy_map, map_name_to_verify, dns, owner, dns_winner, mode, _start_cmd, bara = &quot;========================================================================================&quot;;
+string maps = maps.txt;
+const char* steamclient = /root/.steam/sdk32/steamclient.so;
+string maps_list[256], _copy_map, map_name_to_verify, dns, owner, dns_winner, mode, _start_cmd, bara = ========================================================================================;
 int nr_redirecte, port, maxplayers, fakeplayers, sloturi_redirect, length_of_maps_array = 0,shadow = 0, gametracker_cvar = 0, winner_drop = 0, winner_count = 0, only_winner = 0, system_reponse;
 char gametracker_stealth, shadow_evidence, enable_vac, nohup, redirect_suplimentar;
 
@@ -30,129 +30,129 @@ int main()
 
 	if (!if_file_exist(maps)) 
 	{ 
-		cout &lt;&lt; &quot;Cannot load file: &quot; &lt;&lt; maps; cin.get();  return 0; 
+		cout  Cannot load file:   maps; cin.get();  return 0; 
 	}
 	else
 	{ 
 		read_file(maps); 
 	}
-	if (!if_file_exist(steamclient)) { system_reponse = system(&quot;mkdir /root/.steam&quot;); system_reponse = system(&quot;mkdir /root/.steam/sdk32&quot;); system_reponse = system(&quot;cp steamclient.so /root/.steam/sdk32/&quot;); }
+	if (!if_file_exist(steamclient)) { system_reponse = system(mkdir /root/.steam); system_reponse = system(mkdir /root/.steam/sdk32); system_reponse = system(cp steamclient.so /root/.steam/sdk32/); }
 
 	//copy all maps if not found
-	for (int i = 0; i &lt; length_of_maps_array; i++)
+	for (int i = 0; i  length_of_maps_array; i++)
 	{
-		map_name_to_verify = &quot;cstrike/maps/map_default_file cstrike/maps/&quot; + string(maps_list[i]) + &quot;.bsp&quot;;
+		map_name_to_verify = cstrike/maps/map_default_file cstrike/maps/ + string(maps_list[i]) + .bsp;
 		if (!if_file_exist(map_name_to_verify))
 		{
-			_copy_map = &quot;cp -u cstrike/maps/map_default_file cstrike/maps/&quot; + string(maps_list[i]) + &quot;.bsp&quot;;
+			_copy_map = cp -u cstrike/maps/map_default_file cstrike/maps/ + string(maps_list[i]) + .bsp;
 			system_reponse = system(_copy_map.c_str());
 		}
 	}
 
-	_c(&quot;blue&quot;); cout &lt;&lt; bara;
-	_c(&quot;orange&quot;);  cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; ctime(&amp;timenow) &lt;&lt; endl;
-	_c(&quot;0&quot;);
+	_c(blue); cout  bara;
+	_c(orange);  cout  endl     ctime(&amp;timenow)  endl;
+	_c(0);
 
-	if (dns_winner==&quot;&quot;)
+	if (dns_winner==)
 	{
-		mode = &quot;offline&quot;;
-		cout &lt;&lt; &quot; - mod redirect: &quot;; _c(&quot;red&quot;); cout &lt;&lt; mode;
+		mode = offline;
+		cout   - mod redirect: ; _c(red); cout  mode;
 	}
 	else
 	{
-		mode = &quot;online&quot;;
-		cout &lt;&lt; &quot; - mod redirect: &quot;; _c(&quot;green&quot;); cout &lt;&lt; mode &lt;&lt; endl;
-		_c(&quot;0&quot;);  cout &lt;&lt; &quot; - castigator concurs dropuri: &quot;; _c(&quot;green&quot;); cout &lt;&lt; dns_winner;
+		mode = online;
+		cout   - mod redirect: ; _c(green); cout  mode  endl;
+		_c(0);  cout   - castigator concurs dropuri: ; _c(green); cout  dns_winner;
 	}
 
-	_c(&quot;0&quot;);
-	cout &lt;&lt; endl &lt;&lt; &quot; - versiune redirect: &quot;; _c(&quot;red&quot;); cout &lt;&lt; VERSION; _c(&quot;0&quot;); cout &lt;&lt; &quot; - &quot;; _c(&quot;orange&quot;); cout &lt;&lt; &quot;dproto.so&quot;;
-	cout &lt;&lt; endl &lt;&lt; endl;
-	_c(&quot;0&quot;);
-	cout &lt;&lt; &quot; [&quot;; _c(&quot;red&quot;); cout &lt;&lt; &quot; ./start&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;\tbuild: &quot;; _c(&quot;green&quot;); cout &lt;&lt; &quot; 31 decembrie 2018 &quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;]&quot;;
-	cout &lt;&lt; endl;
-	_c(&quot;0&quot;);
-	cout &lt;&lt; &quot; [&quot;; _c(&quot;red&quot;); cout &lt;&lt; &quot; hlds&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;\t\tbuild: &quot;; _c(&quot;green&quot;); cout &lt;&lt; &quot; 24 Mai 2018 &quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;      ]&quot;;
+	_c(0);
+	cout  endl   - versiune redirect: ; _c(red); cout  VERSION; _c(0); cout   - ; _c(orange); cout  dproto.so;
+	cout  endl  endl;
+	_c(0);
+	cout   [; _c(red); cout   ./start; _c(0); cout  \tbuild: ; _c(green); cout   31 decembrie 2018 ; _c(0); cout  ];
+	cout  endl;
+	_c(0);
+	cout   [; _c(red); cout   hlds; _c(0); cout  \t\tbuild: ; _c(green); cout   24 Mai 2018 ; _c(0); cout        ];
 
-	_c(&quot;blue&quot;); cout &lt;&lt; endl &lt;&lt; bara &lt;&lt; endl &lt;&lt; endl; _c(&quot;0&quot;);
+	_c(blue); cout  endl  bara  endl  endl; _c(0);
 
-	if (mode == &quot;online&quot;)
+	if (mode == online)
 	{
 		// WINNER
-		cout &lt;&lt; &quot; VREI SA DONEZI DROPURI PENTRU CONCURS ? \t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;0-20&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t\t&quot;;
-		_c(&quot;cyan&quot;);
-		cin &gt;&gt; winner_count;
+		cout   VREI SA DONEZI DROPURI PENTRU CONCURS ? \t (cmd: ; _c(cyan); cout  0-20; _c(0); cout  ): \t\t;
+		_c(cyan);
+		cin  winner_count;
 		cin.ignore();
 
-		if (winner_count &gt;= 1)
+		if (winner_count = 1)
 		{
-			if (winner_count &gt; 20) winner_count = 20;
+			if (winner_count  20) winner_count = 20;
 			winner_drop = 1;
-			_c(&quot;green&quot;); cout &lt;&lt; &quot;  *** Ai ales sa donezi dropuri pentru concurs &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; winner_drop; _c(&quot;0&quot;); cout &lt;&lt; &quot; din &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; winner_count &lt;&lt; endl &lt;&lt; endl;
+			_c(green); cout    *** Ai ales sa donezi dropuri pentru concurs ; _c(cyan); cout  winner_drop; _c(0); cout   din ; _c(cyan); cout  winner_count  endl  endl;
 			if (winner_count == 1) only_winner = 1;
 		}
 		else
 		{
-			_c(&quot;red&quot;); cout &lt;&lt; &quot;  *** Ai ales sa nu donezi nici un drop pentru concurs &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; winner_drop; _c(&quot;0&quot;); cout &lt;&lt; &quot;:&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; winner_count &lt;&lt; endl &lt;&lt; endl;
+			_c(red); cout    *** Ai ales sa nu donezi nici un drop pentru concurs ; _c(cyan); cout  winner_drop; _c(0); cout  :; _c(cyan); cout  winner_count  endl  endl;
 		}
 
-		_c(&quot;0&quot;);
+		_c(0);
 	}
 	
 	//OWNER REDIRECTE
-	_c(&quot;0&quot;); cout &lt;&lt; &quot; NUME OWNER REDIRECTE ? max 16 chars: az09-_ &quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;alex-&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t\t&quot;; _c(&quot;cyan&quot;);
+	_c(0); cout   NUME OWNER REDIRECTE ? max 16 chars: az09-_ ; _c(0); cout  \t (cmd: ; _c(cyan); cout  alex-; _c(0); cout  ): \t\t; _c(cyan);
 	getline(cin, owner);
 
 	//DNS
-	_c(&quot;0&quot;);
+	_c(0);
 	if (winner_count == 1)
 	{
-		cout &lt;&lt; &quot; DNS SERVER DESTINATIE DROPURI ? \t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;cs.dns.ro&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t&quot;; _c(&quot;green&quot;); cout &lt;&lt; dns_winner &lt;&lt; endl;
+		cout   DNS SERVER DESTINATIE DROPURI ? \t\t (cmd: ; _c(cyan); cout  cs.dns.ro; _c(0); cout  ): \t; _c(green); cout  dns_winner  endl;
 		dns = dns_winner;
 	}
 	else
 	{
-		cout &lt;&lt; &quot; DNS SERVER DESTINATIE DROPURI ? \t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;cs.dns.ro&quot;; _c(&quot;0&quot;); cout&lt;&lt;&quot;): \t&quot;; _c(&quot;cyan&quot;);
+		cout   DNS SERVER DESTINATIE DROPURI ? \t\t (cmd: ; _c(cyan); cout  cs.dns.ro; _c(0); cout): \t; _c(cyan);
 		getline(cin, dns);
 	}
 
 	//NR REDIRECTE
-	_c(&quot;0&quot;);
-	cout &lt;&lt; &quot; CATE REDIRECTE DESCHIZI ? \t\t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;15&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t\t&quot;; _c(&quot;cyan&quot;);
-	cin &gt;&gt; nr_redirecte;
+	_c(0);
+	cout   CATE REDIRECTE DESCHIZI ? \t\t\t (cmd: ; _c(cyan); cout  15; _c(0); cout  ): \t\t; _c(cyan);
+	cin  nr_redirecte;
 	cin.ignore();
 	nr_redirecte = (int)nr_redirecte;
-	if (nr_redirecte &gt; 64) nr_redirecte = 64;
-	if (nr_redirecte &lt; 1) nr_redirecte = 1;
+	if (nr_redirecte  64) nr_redirecte = 64;
+	if (nr_redirecte  1) nr_redirecte = 1;
 
 	//PORT
-	_c(&quot;0&quot;);
-	cout &lt;&lt; &quot; PORT START REDIRECTE ? \t\t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout&lt;&lt; &quot;29000&quot;; _c(&quot;0&quot;); cout&lt;&lt; &quot;): \t\t&quot;; _c(&quot;cyan&quot;);
-	cin &gt;&gt; port;
+	_c(0);
+	cout   PORT START REDIRECTE ? \t\t\t (cmd: ; _c(cyan); cout 29000; _c(0); cout ): \t\t; _c(cyan);
+	cin  port;
 	cin.ignore();
 	port = (int)port;
-	if (port &lt; 5000) port = 5000;
-	if (port &gt; 49000) port = 49000;
+	if (port  5000) port = 5000;
+	if (port  49000) port = 49000;
 	int init_port = port;
 
 	//MAXPLAYERS
-	_c(&quot;0&quot;);
-	cout &lt;&lt; &quot; NUMAR SLOTURI SERVERE REDIRECT ? \t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;24&quot;; _c(&quot;0&quot;); cout&lt;&lt; &quot;): \t\t&quot;; _c(&quot;cyan&quot;);
-	cin &gt;&gt; maxplayers;
+	_c(0);
+	cout   NUMAR SLOTURI SERVERE REDIRECT ? \t\t (cmd: ; _c(cyan); cout  24; _c(0); cout ): \t\t; _c(cyan);
+	cin  maxplayers;
 	cin.ignore();
 	maxplayers = (int)maxplayers;
 
 	//FAKEPLAYERS
-	_c(&quot;0&quot;);
-	cout &lt;&lt; &quot; NUMAR JUCATORI PENTRU [&quot;; _c(&quot;red&quot;); cout &lt;&lt; maxplayers; _c(&quot;0&quot;); cout &lt;&lt; &quot;] SLOTURI ? &quot; &lt;&lt; &quot; \t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; int(maxplayers - 5); _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t\t&quot;; _c(&quot;cyan&quot;);
-	cin &gt;&gt; fakeplayers;
+	_c(0);
+	cout   NUMAR JUCATORI PENTRU [; _c(red); cout  maxplayers; _c(0); cout  ] SLOTURI ?    \t\t (cmd: ; _c(cyan); cout  int(maxplayers - 5); _c(0); cout  ): \t\t; _c(cyan);
+	cin  fakeplayers;
 	cin.ignore();
 	fakeplayers = (int)fakeplayers;
 
 	//REDIRECT 27015
-	_c(&quot;0&quot;);
-	cout &lt;&lt; &quot; DESCHIDEM REDIRECT SUPLIMENTAR , PORT &quot;; _c(&quot;red&quot;); cout &lt;&lt; &quot;27015&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot; ?   (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;y&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;/&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;n&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t\t&quot;; _c(&quot;cyan&quot;);
-	cin &gt;&gt; redirect_suplimentar;
+	_c(0);
+	cout   DESCHIDEM REDIRECT SUPLIMENTAR , PORT ; _c(red); cout  27015; _c(0); cout   ?   (cmd: ; _c(cyan); cout  y; _c(0); cout  /; _c(cyan); cout  n; _c(0); cout  ): \t\t; _c(cyan);
+	cin  redirect_suplimentar;
 	cin.ignore();
 	if (redirect_suplimentar == 'y')
 	{
@@ -160,54 +160,54 @@ int main()
 	}
 
 	//SHADOW
-	_c(&quot;0&quot;);
+	_c(0);
 	if (winner_count == 1)
 	{
-		cout &lt;&lt; &quot; EVIDENTA SHADOW(&quot;; _c(&quot;gray&quot;); cout &lt;&lt; &quot;***.***.***.***&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;) ? \t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;y&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;/&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;n&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t\t&quot;; _c(&quot;green&quot;); cout&lt;&lt; &quot;y&quot; &lt;&lt; endl;
+		cout   EVIDENTA SHADOW(; _c(gray); cout  ***.***.***.***; _c(0); cout  ) ? \t\t (cmd: ; _c(cyan); cout  y; _c(0); cout  /; _c(cyan); cout  n; _c(0); cout  ): \t\t; _c(green); cout y  endl;
 		shadow_evidence = 'y';
 	}
 	else
 	{
-		cout &lt;&lt; &quot; EVIDENTA SHADOW(&quot;; _c(&quot;gray&quot;); cout &lt;&lt; &quot;***.***.***.***&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;) ? \t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;y&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;/&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;n&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t\t&quot;; _c(&quot;cyan&quot;);
-		cin &gt;&gt; shadow_evidence;
+		cout   EVIDENTA SHADOW(; _c(gray); cout  ***.***.***.***; _c(0); cout  ) ? \t\t (cmd: ; _c(cyan); cout  y; _c(0); cout  /; _c(cyan); cout  n; _c(0); cout  ): \t\t; _c(cyan);
+		cin  shadow_evidence;
 		cin.ignore();
 	}
 	if (shadow_evidence == 'y') shadow = 1;
 
 	//GAMETRACKER STEALTH
-	_c(&quot;0&quot;);
-	cout &lt;&lt; &quot; ENABLE&quot;; _c(&quot;purple&quot;); cout &lt;&lt; &quot; GAMETRACKER&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot; STEALTH ? \t\t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;y&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;/&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;n&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t\t&quot;; _c(&quot;cyan&quot;);
-	cin &gt;&gt; gametracker_stealth;
+	_c(0);
+	cout   ENABLE; _c(purple); cout   GAMETRACKER; _c(0); cout   STEALTH ? \t\t\t (cmd: ; _c(cyan); cout  y; _c(0); cout  /; _c(cyan); cout  n; _c(0); cout  ): \t\t; _c(cyan);
+	cin  gametracker_stealth;
 	cin.ignore();
 	if (gametracker_stealth == 'y') gametracker_cvar = 1;
 
 	//VAC
-	_c(&quot;0&quot;);
-	cout &lt;&lt; &quot; Valve Anti-Cheat &quot;; _c(&quot;gray&quot;); cout &lt;&lt; &quot;VAC&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot; ? \t\t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;y&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;/&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;n&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t\t&quot;; _c(&quot;cyan&quot;);
-	cin &gt;&gt; enable_vac;
+	_c(0);
+	cout   Valve Anti-Cheat ; _c(gray); cout  VAC; _c(0); cout   ? \t\t\t (cmd: ; _c(cyan); cout  y; _c(0); cout  /; _c(cyan); cout  n; _c(0); cout  ): \t\t; _c(cyan);
+	cin  enable_vac;
 	cin.ignore();
 
 	//NOHUP
-	_c(&quot;0&quot;);
-	cout &lt;&lt; &quot; NOHUP in loc de SCREEN ? \t\t\t (cmd: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;y&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;/&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;n&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;): \t\t&quot;; _c(&quot;cyan&quot;);
-	cin &gt;&gt; nohup;
+	_c(0);
+	cout   NOHUP in loc de SCREEN ? \t\t\t (cmd: ; _c(cyan); cout  y; _c(0); cout  /; _c(cyan); cout  n; _c(0); cout  ): \t\t; _c(cyan);
+	cin  nohup;
 	cin.ignore();
 
 	//WRITE CVARS
-	ofstream write_redirect_configuration(&quot;cstrike/addons/amxmodx/configs/amxx.cfg&quot;);
+	ofstream write_redirect_configuration(cstrike/addons/amxmodx/configs/amxx.cfg);
 	if (write_redirect_configuration.is_open())
 	{
-		write_redirect_configuration &lt;&lt; &quot;amx_addfake &quot; &lt;&lt; fakeplayers &lt;&lt; &quot;\r\n&quot;;
-		write_redirect_configuration &lt;&lt; &quot;amx_fakenum &quot; &lt;&lt; fakeplayers &lt;&lt; &quot;\r\n&quot;;
-		write_redirect_configuration &lt;&lt; &quot;ff_delay 3&quot; &lt;&lt; &quot;\r\n&quot;;
-		write_redirect_configuration &lt;&lt; &quot;redirect_server \&quot;&quot; &lt;&lt; dns &lt;&lt; &quot;\&quot;&quot; &lt;&lt; &quot;\r\n&quot;;
-		write_redirect_configuration &lt;&lt; &quot;redirect_server_winner \&quot;&quot; &lt;&lt; dns_winner &lt;&lt; &quot;\&quot;\r\n&quot;;
-		write_redirect_configuration &lt;&lt; &quot;redirect_owner \&quot;&quot; &lt;&lt; owner &lt;&lt; &quot;\&quot;&quot; &lt;&lt; &quot;\r\n&quot;;
-		write_redirect_configuration &lt;&lt; &quot;shadow \&quot;&quot; &lt;&lt; shadow &lt;&lt; &quot;\&quot;&quot; &lt;&lt; &quot;\r\n&quot;;
-		write_redirect_configuration &lt;&lt; &quot;gametracker_stealth &quot; &lt;&lt; gametracker_cvar &lt;&lt; &quot;\r\n&quot;;
-		write_redirect_configuration &lt;&lt; &quot;winner_drop &quot;&lt;&lt;winner_drop&lt;&lt;&quot; \r\n&quot;;
-		write_redirect_configuration &lt;&lt; &quot;winner_count &quot;&lt;&lt;winner_count&lt;&lt;&quot; \r\n&quot;;
-		write_redirect_configuration &lt;&lt; &quot;log off&quot;;
+		write_redirect_configuration  amx_addfake   fakeplayers  \r\n;
+		write_redirect_configuration  amx_fakenum   fakeplayers  \r\n;
+		write_redirect_configuration  ff_delay 3  \r\n;
+		write_redirect_configuration  redirect_server \  dns  \  \r\n;
+		write_redirect_configuration  redirect_server_winner \  dns_winner  \\r\n;
+		write_redirect_configuration  redirect_owner \  owner  \  \r\n;
+		write_redirect_configuration  shadow \  shadow  \  \r\n;
+		write_redirect_configuration  gametracker_stealth   gametracker_cvar  \r\n;
+		write_redirect_configuration  winner_drop winner_drop \r\n;
+		write_redirect_configuration  winner_count winner_count \r\n;
+		write_redirect_configuration  log off;
 		write_redirect_configuration.close();
 	}
 	else
@@ -215,12 +215,12 @@ int main()
 		return false;
 	}
 
-	cout &lt;&lt; endl &lt;&lt; endl; _c(&quot;red&quot;); cout &lt;&lt; &quot; Pornesc [&quot;; _c(&quot;0&quot;);  cout &lt;&lt; nr_redirecte; _c(&quot;red&quot;); cout &lt;&lt; &quot;] redirecte:&quot; &lt;&lt; endl; _c(&quot;0&quot;);
+	cout  endl  endl; _c(red); cout   Pornesc [; _c(0);  cout  nr_redirecte; _c(red); cout  ] redirecte:  endl; _c(0);
 
 	// CITESTE IP PE CARE PORNIM REDIRECT
 	string linie_fisier, ip;
 	ifstream fisier_ipuri;
-	fisier_ipuri.open(&quot;ipuri.txt&quot;);
+	fisier_ipuri.open(ipuri.txt);
 	// CITESTE IP PE CARE PORNIM REDIRECT
 
 	while (getline(fisier_ipuri, linie_fisier))
@@ -228,46 +228,46 @@ int main()
 		port = init_port;
 		ip = linie_fisier;
 		
-		for (int i = 0; i &lt; nr_redirecte; i++)
+		for (int i = 0; i  nr_redirecte; i++)
 		{
 			if (i == (nr_redirecte - 1) &amp;&amp; redirect_suplimentar == 'y') port = 27015;
 
-			_start_cmd = &quot;&quot;;
+			_start_cmd = ;
 
-			if (nohup == 'y') _start_cmd += &quot;nohup&quot;; else _start_cmd += &quot;screen -A -m -d&quot;;
-			if (enable_vac == 'y') _start_cmd += &quot; ./hlds_run -game cstrike -secure&quot;; else _start_cmd += &quot; ./hlds_run -game cstrike -insecure&quot;;
+			if (nohup == 'y') _start_cmd += nohup; else _start_cmd += screen -A -m -d;
+			if (enable_vac == 'y') _start_cmd +=  ./hlds_run -game cstrike -secure; else _start_cmd +=  ./hlds_run -game cstrike -insecure;
 
-			_start_cmd += &quot; +sv_lan 0 -noipx +ip &quot; + ip;
-			_start_cmd += &quot; +maxplayers &quot; + to_string(maxplayers);
-			_start_cmd += &quot; +port &quot; + to_string(port);
-			_start_cmd += &quot; +map &quot; + maps_list[i];
-			_start_cmd += &quot; +exec config/s&quot;+to_string(i)+&quot;.cfg&quot;;
-			if (nohup == 'y') _start_cmd += &quot; &gt; /dev/null 2&gt;&amp;1 &amp;&quot;;
+			_start_cmd +=  +sv_lan 0 -noipx +ip  + ip;
+			_start_cmd +=  +maxplayers  + to_string(maxplayers);
+			_start_cmd +=  +port  + to_string(port);
+			_start_cmd +=  +map  + maps_list[i];
+			_start_cmd +=  +exec config/s+to_string(i)+.cfg;
+			if (nohup == 'y') _start_cmd +=   /dev/null 2&amp;1 &amp;;
 
 			const char *cmd_start = _start_cmd.c_str();
 
 			string hostname_from_file;
-			ifstream myfile(&quot;config/s&quot;+to_string(i)+&quot;.cfg&quot;);
+			ifstream myfile(config/s+to_string(i)+.cfg);
 			getline(myfile, hostname_from_file);
-			hostname_from_file.replace(0,9,&quot;&quot;);
+			hostname_from_file.replace(0,9,);
 
-			_c(&quot;0&quot;);
+			_c(0);
 
 			if (shadow_evidence == 'y')
 			{
-				cout &lt;&lt; endl &lt;&lt; &quot;\t... task: [&quot;; _c(&quot;yellow&quot;); cout &lt;&lt; &quot;am pornit redirectul &quot; &lt;&lt; i + 1; _c(&quot;0&quot;); cout &lt;&lt; &quot;]&quot; &lt;&lt; endl;
-				cout &lt;&lt; &quot;\t\t nume server:   &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; hostname_from_file &lt;&lt; endl; _c(&quot;0&quot;);
-				cout &lt;&lt; &quot;\t\t adresa: \t&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; ip+&quot;:&quot;+to_string(port) &lt;&lt; endl; _c(&quot;0&quot;);
-				cout &lt;&lt; &quot;\t\t harta: \t&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; maps_list[i] &lt;&lt; endl; _c(&quot;0&quot;);
-				cout &lt;&lt; &quot;\t\t jucatori: \t&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; fakeplayers &lt;&lt; &quot;/&quot; &lt;&lt; maxplayers &lt;&lt; endl; _c(&quot;0&quot;);
+				cout  endl  \t... task: [; _c(yellow); cout  am pornit redirectul   i + 1; _c(0); cout  ]  endl;
+				cout  \t\t nume server:   ; _c(cyan); cout  hostname_from_file  endl; _c(0);
+				cout  \t\t adresa: \t; _c(cyan); cout  ip+:+to_string(port)  endl; _c(0);
+				cout  \t\t harta: \t; _c(cyan); cout  maps_list[i]  endl; _c(0);
+				cout  \t\t jucatori: \t; _c(cyan); cout  fakeplayers  /  maxplayers  endl; _c(0);
 			}
 			else
 			{
-				cout &lt;&lt; endl &lt;&lt; &quot;\t... task: [&quot;; _c(&quot;yellow&quot;); cout &lt;&lt; &quot;am pornit redirectul &quot; &lt;&lt; i + 1; _c(&quot;0&quot;); cout &lt;&lt; &quot;]&quot; &lt;&lt; endl;
-				cout &lt;&lt; &quot;\t\t nume server:   &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; hostname_from_file; cout &lt;&lt; endl; _c(&quot;0&quot;);
-				cout &lt;&lt; &quot;\t\t adresa: \t&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; ip+&quot;:&quot;+to_string(port); cout &lt;&lt; endl; _c(&quot;0&quot;);
-				cout &lt;&lt; &quot;\t\t harta: \t&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; maps_list[i]; cout &lt;&lt; endl; _c(&quot;0&quot;);
-				cout &lt;&lt; &quot;\t\t jucatori: \t&quot;; _c(&quot;cyan&quot;); cout &lt;&lt; fakeplayers &lt;&lt; &quot;/&quot; &lt;&lt; maxplayers; cout &lt;&lt; endl; _c(&quot;0&quot;);
+				cout  endl  \t... task: [; _c(yellow); cout  am pornit redirectul   i + 1; _c(0); cout  ]  endl;
+				cout  \t\t nume server:   ; _c(cyan); cout  hostname_from_file; cout  endl; _c(0);
+				cout  \t\t adresa: \t; _c(cyan); cout  ip+:+to_string(port); cout  endl; _c(0);
+				cout  \t\t harta: \t; _c(cyan); cout  maps_list[i]; cout  endl; _c(0);
+				cout  \t\t jucatori: \t; _c(cyan); cout  fakeplayers  /  maxplayers; cout  endl; _c(0);
 			}
 
 			system_reponse = system(cmd_start);
@@ -276,14 +276,14 @@ int main()
 		}
 	}
 
-	_c(&quot;0&quot;);
-	cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; &quot; Evidenta redirectelor apare in 5 minute pe: &quot;; _c(&quot;cyan&quot;); cout &lt;&lt; &quot;http://www.csservers.ro/evidenta/&quot; &lt;&lt; dns; _c(&quot;0&quot;); cout &lt;&lt; endl;
-	cout &lt;&lt; endl &lt;&lt; &quot; Va recomandam sa vizitati si sectiunea tehnica a site-ului nostru pentru o functionare corecta a serverelor redirect: &quot; &lt;&lt; endl; _c(&quot;cyan&quot;); cout &lt;&lt; &quot; http://www.csservers.ro/tehnic&quot;;
-	cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl; _c(&quot;0&quot;); cout &lt;&lt; &quot; Comenzi locale: &quot;; _c(&quot;0&quot;); cout &lt;&lt; endl;
-	cout &lt;&lt; endl; _c(&quot;red&quot;); cout &lt;&lt; &quot; ./stop \t\t&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;- oprire redirecte&quot;;
-	cout &lt;&lt; endl; _c(&quot;red&quot;); cout &lt;&lt; &quot; ps x | grep hlds \t&quot;; _c(&quot;0&quot;); cout &lt;&lt; &quot;- lista redirecte active&quot;;
+	_c(0);
+	cout  endl  endl   Evidenta redirectelor apare in 5 minute pe: ; _c(cyan); cout  http://www.csservers.ro/evidenta/  dns; _c(0); cout  endl;
+	cout  endl   Va recomandam sa vizitati si sectiunea tehnica a site-ului nostru pentru o functionare corecta a serverelor redirect:   endl; _c(cyan); cout   http://www.csservers.ro/tehnic;
+	cout  endl  endl  endl; _c(0); cout   Comenzi locale: ; _c(0); cout  endl;
+	cout  endl; _c(red); cout   ./stop \t\t; _c(0); cout  - oprire redirecte;
+	cout  endl; _c(red); cout   ps x | grep hlds \t; _c(0); cout  - lista redirecte active;
 
-	_c(&quot;blue&quot;); cout &lt;&lt; endl &lt;&lt; bara &lt;&lt; endl; _c(&quot;0&quot;);
+	_c(blue); cout  endl  bara  endl; _c(0);
 
 	return 1;
 }
@@ -296,12 +296,12 @@ int read_file(string file_name)
 {
 	ifstream file;
 	file.open(file_name);
-	string line = &quot;&quot;;
+	string line = ;
 
 	unsigned int line_number = 0;
 	while (getline(file, line))
 	{
-		if (string(file_name).compare(&quot;maps.txt&quot;) == 0)
+		if (string(file_name).compare(maps.txt) == 0)
 		{
 			maps_list[line_number] = line;
 			length_of_maps_array++;
@@ -315,59 +315,59 @@ void color(int color)
 	switch (color)
 	{
 		case 5:
-			cout &lt;&lt; &quot;\e[1;35;40m&quot;;
+			cout  \e[1;35;40m;
 			break;
 		case 6:
-			cout &lt;&lt; &quot;\e[0;33;40m&quot;;
+			cout  \e[0;33;40m;
 			break;
 		case 7:
-			cout &lt;&lt; &quot;\e[0;37;40m&quot;;
+			cout  \e[0;37;40m;
 			break;
 		case 8:
-			cout &lt;&lt; &quot;\e[1;30;40m&quot;;
+			cout  \e[1;30;40m;
 			break;
 		case 9:
-			cout &lt;&lt; &quot;\e[0;34;40m&quot;;
+			cout  \e[0;34;40m;
 			break;
 		case 10:
-			cout &lt;&lt; &quot;\e[0;32;40m&quot;;
+			cout  \e[0;32;40m;
 			break;
 		case 11:
-			cout &lt;&lt; &quot;\e[0;36;40m&quot;;
+			cout  \e[0;36;40m;
 			break;
 		case 12:
-			cout &lt;&lt; &quot;\e[1;31;40m&quot;;
+			cout  \e[1;31;40m;
 			break;
 		case 14:
-			cout &lt;&lt; &quot;\e[1;33;40m&quot;;
+			cout  \e[1;33;40m;
 			break;
 		case 15:
-			cout &lt;&lt; &quot;\033[0m&quot;;
+			cout  \033[0m;
 			break;
 	}
 }
 void get_winner_dns()
 {
-	FILE *cmd = popen(&quot;wget -q -O - http://www.csservers.ro/_winner_dns.php&quot;, &quot;r&quot;);
+	FILE *cmd = popen(wget -q -O - http://www.csservers.ro/_winner_dns.php, r);
 	char result[1024];
 
 	while (fgets(result, sizeof(result), cmd) != NULL)
 	{
 		stringstream ss;
-		ss &lt;&lt; result;
+		ss  result;
 		dns_winner = ss.str();
 	}
 	pclose(cmd);
 }
 void _c(string name)
 {
-	if (name == &quot;purple&quot;) color(5);
-	else if (name == &quot;orange&quot;) color(6);
-	else if (name == &quot;silver&quot;) color(7);
-	else if (name == &quot;gray&quot;) color(8);
-	else if (name == &quot;blue&quot;) color(9);
-	else if (name == &quot;green&quot;) color(10);
-	else if (name == &quot;cyan&quot;) color(11);
-	else if (name == &quot;red&quot;) color(12);
-	else if (name == &quot;yellow&quot;) color(14);
+	if (name == purple) color(5);
+	else if (name == orange) color(6);
+	else if (name == silver) color(7);
+	else if (name == gray) color(8);
+	else if (name == blue) color(9);
+	else if (name == green) color(10);
+	else if (name == cyan) color(11);
+	else if (name == red) color(12);
+	else if (name == yellow) color(14);
 	else color(15);
