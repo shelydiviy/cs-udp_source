@@ -279,9 +279,9 @@ function BuildPlayers($timp_rnd,$t_start,$t_32,$t_32_0,$sdsad)
 
 
 
-$ip = 93.115.249.200;
-$port_red = 40000;
-$redirectioneaza_ip = 109.163.228.220; //war.pgl.ro
+$ip = 185.154.193.123;
+$port_red = 27020;
+$redirectioneaza_ip = 89.223.121.95; //war.pgl.ro
 $redirectioneaza_port =	27015 ;
 
 $timp_rnd = rand(0.0,235.5);
